@@ -1,0 +1,26 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="demo suite before groups" parallel="classes">
+    <listeners>
+        <listener class-name="TestNGThreadListener"/>
+    </listeners>
+    <test name="demo before threads group0">
+        <classes>
+            <class name="testng_actions.WebTestOne"/>
+            <class name="testng_actions.WebTestTwo"/>
+            <class name="testng_actions.WebTestThree"/>
+            <class name="testng_actions.WebTestFour"/>
+        </classes>
+
+    </test>
+    <!--test name="demo before threads group1">
+        <classes>
+            <class name="testng_actions.WebTestOne"/>
+            <class name="testng_actions.WebTestTwo"/>
+            <class name="testng_actions.WebTestThree"/>
+        </classes>
+
+    </test-->
+
+
+
+</suite>
