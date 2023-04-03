@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id "io.qameta.allure" version "2.11.2"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+task cleanAllureDir(type: Delete) {
+    delete "build/allure-results"
+}
+
+compileJava {
+    finalizedBy cleanAllureDir
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+allure {
+    version = '2.19.0'
+    autoconfigure = true
+}
+
+dependencies {
+    implementation 'org.testng:testng:7.1.0'
+    testImplementation 'org.testng:testng:7.1.0'
+// selenide
+    implementation 'com.codeborne:selenide:6.12.4'
+// log4j
+    implementation 'org.apache.logging.log4j:log4j-core:2.19.0'
+    implementation 'org.apache.logging.log4j:log4j-api:2.19.0'
+// lombok
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+    implementation 'org.projectlombok:lombok:1.18.24'
+    // allure
+    implementation 'io.qameta.allure:allure-testng:2.19.0'
+    implementation 'io.qameta.allure:allure-selenide:2.19.0'
+    implementation 'io.qameta.allure:allure-commandline:2.19.0'
+    // https://mvnrepository.com/artifact/io.qameta.allure/allure-java-commons
+    implementation 'io.qameta.allure:allure-java-commons:2.19.0'
+
+    test.doFirst {
+    new File("build/allure-results").mkdir()
+}
+
+
+
+}
+
+test {
+    useTestNG()
+
+}
